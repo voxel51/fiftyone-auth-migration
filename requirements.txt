@@ -1,0 +1,5 @@
+aiohttp==3.8.6
+auth0-python==4.5.0
+backoff==2.2.1
+pydantic==1.10.7
+motor==3.1.1
