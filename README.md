@@ -1,3 +1,5 @@
+# NOTE: This repository is currently under construction
+---
 # Fiftyone Teams Auth Migration Script
 
 ## Intent
