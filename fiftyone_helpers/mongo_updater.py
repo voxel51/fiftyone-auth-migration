@@ -4,18 +4,20 @@ from config import Config
 from motor.motor_asyncio import AsyncIOMotorClient
 
 client = AsyncIOMotorClient(Config.MONGO_URI)
-
 db = client[Config.CAS_DATABASE]
 
 async def insert_org(org_data):
     collection = "orgs"
     org_data["is_default"] = True
-    await db[collection].insert_one(org_data)
+
+    print(f"Adding Organziation {org_data['name']} to Internal")
+    await db[collection].update_one({"id": org_data["id"]}, {"$set":{**org_data}}, upsert=True)
 
 async def insert_users(user_data):
     collection = "users"
     user = make_cas_user(user_data)
-    await db[collection].insert_one(user)
+    print(f"Adding user {user_data['name']} to Internal")
+    await db[collection].update_one({"id": user_data["id"]}, {"$set":{**user}}, upsert=True)
 
 def make_cas_user(user_data):
     # add membership info, shape of user object
