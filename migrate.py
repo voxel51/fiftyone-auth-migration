@@ -4,11 +4,12 @@
 |
 """
 
+import aiohttp
 import asyncio
 
 from auth0_helpers import Auth0ManagementAPIFactory, Auth0Manager
 from config import Config
-from fiftyone_helpers import insert_org, insert_users
+from cas_helpers import add_org, add_user
 
 auth0_mgmt_factory = Auth0ManagementAPIFactory(
     Config.CLIENT_DOMAIN,
@@ -22,16 +23,21 @@ auth0_manager = Auth0Manager(
     auth0_mgmt_factory,
 )
 
-async def migrate_users():
+async def migrate_users(session):
+    print("Migrating Users...")
     async for user in auth0_manager.iter_users():
-        await insert_users(dict(user))
+        await add_user(session, dict(user))
 
-async def migrate_organization():
+async def migrate_organization(session):
+    print("Migrating Organizations...")
     org = await auth0_manager.get_organization()
-    await insert_org(dict(org))
+    await add_org(session, dict(org))
 
 async def main():
-    await migrate_organization()
-    await migrate_users()
+    session = aiohttp.ClientSession()
+    await migrate_organization(session)
+    await migrate_users(session)
+    await session.close()
+    print("Migration Complete")
 
 asyncio.run(main())

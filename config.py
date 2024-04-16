@@ -15,6 +15,7 @@ class Config:
     # script config
     MAX_HTTP_RETRIES = 10
 
-    # fiftyone ecosystem config
-    CAS_DATABASE = "cas"
-    MONGO_URI = ""
+    # CAS config
+    CAS_BASE_URL = ""
+    CAS_AUTH_SECRET = ""
+
