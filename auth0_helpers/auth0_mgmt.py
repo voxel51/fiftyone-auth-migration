@@ -318,6 +318,7 @@ class Auth0Manager:
 
 
     async def get_organization(self) -> Organization:
+        print("Retrieving Organization from Auth0...")
         auth0_mgmt_orgs = await self.__mgmt_api_factory.get_organizations()
         response = await auth0_mgmt_orgs.get_organization_async(self._organization_id)
 
@@ -393,6 +394,7 @@ class Auth0Manager:
         search: list[tuple[str, list[Literal["email", "id", "name"]]]] | None = None,
         order: tuple[Literal["email", "name"], Literal[1, -1]] | None = None,
     ) -> AsyncIterator[User]:
+        print("Retrieving User Information from Auth0...")
         user_iter = self.__iter_users(search)
 
         # Only sort if `order`` is explicitly provided. Getting all the user into memory to sort

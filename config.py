@@ -4,17 +4,21 @@
 |
 """
 
+import os
+
+
 class Config:
     # Auth0 config
-    AUDIENCE = ""
-    CLIENT_DOMAIN = ""
-    CLIENT_ID = ""
-    CLIENT_SECRET = ""
-    ORGANIZATION_ID = ""
+    AUDIENCE = os.environ["AUTH0_AUDIENCE"]
+    CLIENT_DOMAIN = os.environ["AUTH0_DOMAIN"]
+    CLIENT_ID = os.environ["AUTH0_MGMT_CLIENT_ID"]
+    CLIENT_SECRET = os.environ["AUTH0_MGMT_CLIENT_SECRET"]
+    ORGANIZATION_ID = os.environ["AUTH0_ORGANIZATION"]
 
     # script config
-    MAX_HTTP_RETRIES = 10
+    MAX_HTTP_RETRIES = int(os.environ.get("MAX_HTTP_RETRIES") or 10)
 
-    # fiftyone ecosystem config
-    CAS_DATABASE = "cas"
-    MONGO_URI = ""
+    # CAS config
+    CAS_BASE_URL = os.environ["CAS_BASE_URL"]
+    FIFTYONE_AUTH_SECRET = os.environ["FIFTYONE_AUTH_SECRET"]
+
