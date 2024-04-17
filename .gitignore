@@ -2,4 +2,4 @@
 __pycache__/*
 config-reference
 *.pyc
-
+.env

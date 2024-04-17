@@ -2,7 +2,7 @@ import aiohttp
 from config import Config
 
 CAS_BASE_URL = Config.CAS_BASE_URL
-HEADERS = {"X-API-KEY": Config.CAS_AUTH_SECRET}
+HEADERS = {"X-API-KEY": Config.FIFTYONE_AUTH_SECRET}
 
 session = aiohttp.ClientSession()
 
