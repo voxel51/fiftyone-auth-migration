@@ -43,7 +43,6 @@ async def main():
         print("Unable to connect to the Central Auth Service (CAS)\n")
         print("Please check your Fiftyone Teams deployment and ensure that")
         print("there is a running CAS at the supplied CAS_BASE_URL\n")
-        return None
 
     # we don't want to run in legacy mode
     if mode == "legacy":
