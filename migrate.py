@@ -9,7 +9,7 @@ import asyncio
 
 from auth0_helpers import Auth0ManagementAPIFactory, Auth0Manager
 from config import Config
-from cas_helpers import add_org, add_user
+from cas_helpers import add_org, add_user, get_auth_mode
 
 auth0_mgmt_factory = Auth0ManagementAPIFactory(
     Config.CLIENT_DOMAIN,
@@ -34,10 +34,35 @@ async def migrate_organization(session):
     await add_org(session, dict(org))
 
 async def main():
-    session = aiohttp.ClientSession()
-    await migrate_organization(session)
-    await migrate_users(session)
-    await session.close()
-    print("Migration Complete")
+    async with aiohttp.ClientSession() as session:
+        mode = await get_auth_mode(session)
+
+    # test connection to CAS
+    if not mode:
+        print("==== Error ====")
+        print("Unable to connect to the Central Auth Service (CAS)\n")
+        print("Please check your Fiftyone Teams deployment and ensure that")
+        print("there is a running CAS at the supplied CAS_BASE_URL\n")
+        return None
+
+    # we don't want to run in legacy mode
+    if mode == "legacy":
+        print("==== Alert ====")
+        print("The migration script must be run using a Central Auth")
+        print("Service (CAS) configured to internal mode.\n")
+        print("The currently running CAS is configured to legacy mode\n")
+        print("Please check the FIFTYONE_AUTH_MODE environment variable")
+        print("in your running Fiftyone Teams Deployment\n")
+        print("For help, contact your Voxel51 Customer Service Representative\n")
+
+    # it's internal, green light go!
+    if mode == "internal":
+        async with aiohttp.ClientSession() as session:
+            # TODO: check for auth config
+            await migrate_organization(session)
+            await migrate_users(session)
+
+        print("Migration Complete")
+
 
 asyncio.run(main())
