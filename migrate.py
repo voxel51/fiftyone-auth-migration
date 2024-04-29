@@ -9,7 +9,7 @@ import asyncio
 
 from auth0_helpers import Auth0ManagementAPIFactory, Auth0Manager
 from config import Config
-from cas_helpers import add_org, add_user, get_auth_mode
+from cas_helpers import add_org, add_user, get_auth_mode, get_existing_auth_config
 
 auth0_mgmt_factory = Auth0ManagementAPIFactory(
     Config.CLIENT_DOMAIN,
@@ -57,9 +57,15 @@ async def main():
     # it's internal, green light go!
     if mode == "internal":
         async with aiohttp.ClientSession() as session:
-            # TODO: check for auth config
+            auth_config = await get_existing_auth_config(session)
             await migrate_organization(session)
             await migrate_users(session)
+            if not auth_config:
+                print("==== Warning ====")
+                print("An existing auth configuration was not found")
+                print("or does not match an existing IdP configuration.\n")
+                print("Please review your auth configuration in the provided")
+                print("page at: {your domain}/cas/admins")
 
         print("Migration Complete")
 

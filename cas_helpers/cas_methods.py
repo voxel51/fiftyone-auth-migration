@@ -41,3 +41,19 @@ async def get_auth_mode(session):
         print("Unable to connect to CAS with ERROR: ", e, "\n")
         return None
 
+async def get_existing_auth_config(session):
+    async with session.get(f"{CAS_BASE_URL}/config/", headers=HEADERS) as resp:
+        # check if this looks like an auto imported auth0 config
+        if resp.status == 200:
+            info = await resp.json()
+            for provider in info["authenticationProviders"]:
+                id = provider["id"] 
+                org = provider["authorization"]["params"]["organization"]
+                # if the id matches our auto generated and the org id
+                # matches the existing auth0 org id, this is the 
+                # associated one created automatically and can be used.
+                # otherwise, we  want to warn the user to review
+                # their auth config
+                if id == "auth0" and org == Config.ORGANIZATION_ID:
+                    return True
+        return False
