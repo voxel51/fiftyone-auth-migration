@@ -50,8 +50,8 @@ Fiftyone Teams.
 deployment to `internal` mode. This is done by updating the `FIFTYONE_AUTH_MODE`
 environment variable from `legacy` to `internal`. 
 
-NOTE: After switching to `internal` mode and before running the Auth Migration
-Script, users will be unable to log in.
+> **NOTE**: After switching to `internal` mode and before running the Auth Migration
+> Script, users will be unable to log in.
 
 5. Run the Auth Migration Script. The script will move users and organizations
 from an existing Auth0 tenant to the new internal system that will manage users
