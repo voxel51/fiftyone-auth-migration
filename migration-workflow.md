@@ -42,7 +42,7 @@ with users. This could include signing in or listing users, as an example.
 script is installed and ready to run.
 
 3. The Auth Migration Script must be run in a location that has access
-to call REST APIs in the running deployment. This may mean running in the same
+to call the deployment's REST APIs. This may mean running in the same
 cluster as the deployment or in the same network as the VM that runs
 Fiftyone Teams.
 
