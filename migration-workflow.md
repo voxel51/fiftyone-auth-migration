@@ -46,7 +46,7 @@ to call the deployment's REST APIs. This may mean running in the same
 cluster as the deployment or in the same network as the VM that runs
 Fiftyone Teams.
 
-4. Before running the Auth Migration Script, switch the Fiftyone Teams
+4. Switch the Fiftyone Teams
 deployment to `internal` mode. This is done by updating the `FIFTYONE_AUTH_MODE`
 environment variable from `legacy` to `internal`. 
 
