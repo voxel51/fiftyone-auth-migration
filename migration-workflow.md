@@ -37,8 +37,8 @@ brings their own offline IdP, such as KeyCloak).
 1. Take any action in Fiftyone Teams running in `legacy` mode that interacts
 with users. This could include signing in or listing users, as an example.
 
-2. Setup the `.env` file for the Auth Migration Script. An example template
-is included. Follow any other steps in the README as necessary to ensure the
+2. Setup the `.env` file for the Auth Migration Script. See the example template
+([env.template](./env.template)). Follow the steps in the README as necessary to ensure the
 script is installed and ready to run.
 
 3. The Auth Migration Script must be run in a location that has access
