@@ -57,14 +57,14 @@ environment variable from `legacy` to `internal`.
 from an existing Auth0 tenant to the new internal system that will manage users
 moving forward. 
 
-5a. The script will inform if the migration was successful or if there were
-issues. If the script informs that an auth config was not found, it can be
-populated by taking any action in the existing Fiftyone Teams deployment that
-interacts with users, such as navigating to the user list page in the Admin
-Settings.
+    1. The script will inform if the migration was successful or if there were
+       issues. If the script informs that an auth config was not found, it can be
+       populated by taking any action in the existing Fiftyone Teams deployment that
+       interacts with users, such as navigating to the user list page in the Admin
+       Settings.
 
-5b. The script can be run again at this point safely to see that the warning
-no longer appears. 
+    2. The script can be run again at this point safely to see that the warning
+       no longer appears. 
 
 6. Once the script has run succesfully, Fiftyone Teams is now running in 
 `internal` mode and the existing users, orgs, and their permissions
