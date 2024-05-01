@@ -27,7 +27,7 @@ brings their own offline IdP, such as KeyCloak).
 - The Fiftyone Auth Migration Script: 
     - https://github.com/voxel51/fiftyone-auth-migration
 
-    - Cloned locally and installed (See README for the script)
+    - Cloned locally and installed (See [README.md](./README.md) for the script)
 
 - Access to modify environment variables in the running deployment
 
