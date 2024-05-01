@@ -29,7 +29,7 @@ brings their own offline IdP, such as KeyCloak).
 
     - Cloned locally and installed (See [README.md](./README.md) for the script)
 
-- Access to modify environment variables in the running deployment
+- Modifying environment variables in the running deployment
 
 
 ## Steps
