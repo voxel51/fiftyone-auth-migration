@@ -45,7 +45,7 @@ async def get_existing_auth_config(session):
                 # their auth config
 
                 # check the auth0 client secret:
-                client_secret = provider["authorization"]["params"]["clientSecret"]
+                client_secret = provider["clientSecret"]
                 if client_secret != Config.CLIENT_SECRET:
                     print("==== Warning ====")
                     print("Please note that the currently configured clientSecret")
