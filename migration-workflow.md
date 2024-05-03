@@ -4,7 +4,7 @@ deployment from `legacy` mode to `internal` mode. This will remove the
 dependency on Auth0 as a user management system.
 
 ## Terms
-Fiftyone Teams now has two modes: `legacy` and `internal`.
+Fiftyone Teams now has two authentication modes: `legacy` and `internal`.
 
 `legacy` mode is fully dependent on an Auth0 connection to handle
 authentication and user management.
