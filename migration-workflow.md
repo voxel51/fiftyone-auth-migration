@@ -11,7 +11,7 @@ authentication and user management.
 
 By contrast, `internal` mode functions by moving user management to within
 the system. After an initial migration of users, operators of Fiftyone Teams
-may continue to use Auth0 as an identity provider (IdP) to facilitate
+may continue to use Auth0 as an Identity Provider (IdP) to facilitate
 authentication while keeping all other aspects of user management internal.
 
 Additionally, operators may choose to change the target IdP to be something
