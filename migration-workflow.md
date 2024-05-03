@@ -14,7 +14,7 @@ the system. After an initial migration of users, operators of Fiftyone Teams
 may continue to use Auth0 as an Identity Provider (IdP) to facilitate
 authentication while keeping all other aspects of user management internal.
 
-Additionally, operators may choose to change the target IdP to be something
+Additionally, operators may change the target IdP to be something
 other than Auth0. This allows individual clients to choose to use their own
 IdP as it suits their needs, as well as allows the possibility of running
 Fiftyone Teams fully offline, including user management (assuming the client
