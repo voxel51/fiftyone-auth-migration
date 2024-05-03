@@ -22,9 +22,9 @@ Using python>=3.10, install requirements from the root:
 pip install -r requirements.txt
 ```
 
-Create an environment file, `.env` at the root of the project.
+Create an environment file, `.env` at the root of the project by copying the `env.template` file.
 
-Copy in the relevant values from your Fiftyone Teams deployment `.env` file to the newly created one in this project. A reference for the values needed can be found in `env.template` at the root of the project.
+Copy the relevant values from your Fiftyone Teams deployment `.env` file for docker compose deployments or `values.yaml` file for Kubernetes deployments to the newly created `.env` file in this project.
 
 Set those variables for your current terminal session by running the following from the root of the project:
 
