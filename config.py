@@ -12,7 +12,8 @@ class Config:
     AUDIENCE = os.environ["AUTH0_AUDIENCE"]
     CLIENT_DOMAIN = os.environ["AUTH0_DOMAIN"]
     CLIENT_ID = os.environ["AUTH0_MGMT_CLIENT_ID"]
-    CLIENT_SECRET = os.environ["AUTH0_MGMT_CLIENT_SECRET"]
+    CLIENT_MGMT_SECRET = os.environ["AUTH0_MGMT_CLIENT_SECRET"]
+    CLIENT_SECRET = os.environ["AUTH0_CLIENT_SECRET"]
     ORGANIZATION_ID = os.environ["AUTH0_ORGANIZATION"]
 
     # script config
