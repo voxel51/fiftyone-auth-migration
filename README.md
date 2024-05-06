@@ -1,7 +1,3 @@
-# NOTE: This repository is currently under construction
-
----
-
 # Fiftyone Teams Auth Migration Script
 
 This tool is provided to help users move from the Legacy auth environments of Fiftyone Teams to the Internal environment.
