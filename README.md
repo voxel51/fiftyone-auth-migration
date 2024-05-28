@@ -4,13 +4,13 @@ This tool is provided to help users move from the Legacy auth environments of Fi
 
 Specifically, it helps facilitate moving organizations and users from an existing Auth0 Tenant to the Internal ecosystem so that user and role information can be preserved.
 
+**This migration script requires Fiftyone Teams version >= 1.7.0**
+
 ## Migrating FiftyOne Teams to internal mode
 
 See the [migration workflow](./migration-workflow.md) document for instructions on how to use this repository to migrate your FiftyOne Teams deployment to `internal` auth mode.
 
 Read more about FiftyOne authentication modes [here](https://docs.voxel51.com/teams/pluggable_auth.html#fiftyone-authentication-modes).
-
-
 
 ## Usage
 
@@ -37,7 +37,6 @@ Set those variables for your current terminal session by running the following f
 ```
 export $(grep -v '^#' .env | xargs)
 ```
-
 
 After the environment variables for this repository have been set, you are ready to run the migration script.
 
