@@ -4,17 +4,18 @@
 |
 """
 
-import aiohttp
 import asyncio
 
+import aiohttp
 from auth0_helpers import Auth0ManagementAPIFactory, Auth0Manager
+from cas_helpers import (add_org, add_user, get_auth_mode,
+                         get_existing_auth_config)
 from config import Config
-from cas_helpers import add_org, add_user, get_auth_mode, get_existing_auth_config
 
 auth0_mgmt_factory = Auth0ManagementAPIFactory(
     Config.CLIENT_DOMAIN,
     Config.CLIENT_ID,
-    Config.CLIENT_SECRET,
+    Config.CLIENT_MGMT_SECRET,
     Config.AUDIENCE,
 )
 

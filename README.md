@@ -1,30 +1,36 @@
-# NOTE: This repository is currently under construction
-
----
-
 # Fiftyone Teams Auth Migration Script
-
-## Intent
 
 This tool is provided to help users move from the Legacy auth environments of Fiftyone Teams to the Internal environment.
 
 Specifically, it helps facilitate moving organizations and users from an existing Auth0 Tenant to the Internal ecosystem so that user and role information can be preserved.
 
+## Migrating FiftyOne Teams to internal mode
+
+See the [migration workflow](./migration-workflow.md) document for instructions on how to use this repository to migrate your FiftyOne Teams deployment to `internal` auth mode.
+
+Read more about FiftyOne authentication modes [here](https://docs.voxel51.com/teams/pluggable_auth.html#fiftyone-authentication-modes).
+
+
+
 ## Usage
 
-This script is designed to be used with a running version of Fiftyone Teams version >= 1.6.0
+### Setup
 
-For the script to run properly, the `FIFTYONE_AUTH_MODE` environment variable in the Fiftyone Teams deployment must be set to the value `internal`.
+This script is designed to be used with a running version of Fiftyone Teams version >= 1.6.0.
 
-Using python>=3.10, install requirements from the root:
+> Note: For the script to run properly, your Fiftyone Teams deployment must be running in `internal` mode.
+
+Using python>=3.10, install requirements from the root of this repository:
 
 ```
 pip install -r requirements.txt
 ```
 
-Create an environment file, `.env` at the root of the project.
+Create an environment file, `.env` at the root of the project by copying the [`env.template`](./env.template) file.
 
-Copy in the relevant values from your Fiftyone Teams deployment `.env` file to the newly created one in this project. A reference for the values needed can be found in `env.template` at the root of the project.
+Copy the relevant values from your Fiftyone Teams deployment (the `.env` file for docker compose deployments or `values.yaml` file for Kubernetes deployments) to the newly created `.env` file in this project.
+
+> If you have trouble locating these values or the `.env` or `values.yaml` file for your Fiftyone Teams deployment, please contact your Voxel51 Customer Success representative.
 
 Set those variables for your current terminal session by running the following from the root of the project:
 
@@ -32,11 +38,12 @@ Set those variables for your current terminal session by running the following f
 export $(grep -v '^#' .env | xargs)
 ```
 
-If you have trouble locating these values or the `.env` file for your Fiftyone Teams deployment, please contact your Voxel51 Customer Success representative
 
-After the enviornment variables have been set, you are ready to run the migration script.
+After the environment variables for this repository have been set, you are ready to run the migration script.
 
-Run
+### Running the migration
+
+> **Warning**: Read the [migration workflow](./migration-workflow.md) document to ensure your FiftyOne Teams deployment is ready to be migrated.
 
 ```
 python migrate.py

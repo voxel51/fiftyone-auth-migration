@@ -54,6 +54,18 @@ async def get_existing_auth_config(session):
                 # associated one created automatically and can be used.
                 # otherwise, we  want to warn the user to review
                 # their auth config
+
+                # check the auth0 client secret:
+                client_secret = provider["clientSecret"]
+                if client_secret != Config.CLIENT_SECRET:
+                    print("==== Warning ====")
+                    print("Please note that the currently configured clientSecret")
+                    print("is the management secret. This should be updated to")
+                    print("use the auth secret. This can be referenced in the")
+                    print("environment variable `AUTH0_CLIENT_SECRET`")
+                    print("This value should be updated for users to log in")
+
                 if id == "auth0" and org == Config.ORGANIZATION_ID:
                     return True
         return False
+
