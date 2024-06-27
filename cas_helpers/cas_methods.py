@@ -22,12 +22,12 @@ async def add_user(session, user_data):
     print("Adding User...")
     async with session.post(f"{CAS_BASE_URL}/orgs/{org_id}/users/", headers=HEADERS, data={
             "id": user_data["id"],
-            "email": user_data["email"],
+            "email": user_data["email"].lower(),
             "name": user_data["name"],
             "picture": user_data.get("picture"),
             "role": user_data["role"]
             }) as resp:
-          print(f"Added User {user_data['email']}")
+          print(f"Added User {user_data['email'].lower()}")
 
 async def get_auth_mode(session):
     try:
