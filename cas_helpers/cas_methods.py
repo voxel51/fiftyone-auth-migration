@@ -22,12 +22,12 @@ async def add_user(session, user_data):
     print("Adding User...")
     async with session.post(f"{CAS_BASE_URL}/orgs/{org_id}/users/", headers=HEADERS, data={
             "id": user_data["id"],
-            "email": user_data["email"],
+            "email": user_data["email"].lower(),
             "name": user_data["name"],
             "picture": user_data.get("picture"),
             "role": user_data["role"]
             }) as resp:
-          print(f"Added User {user_data['email']}")
+          print(f"Added User {user_data['email'].lower()}")
 
 
 async def get_existing_auth_config(session):
@@ -36,10 +36,10 @@ async def get_existing_auth_config(session):
         if resp.status == 200:
             info = await resp.json()
             for provider in info["authenticationProviders"]:
-                id = provider["id"] 
+                id = provider["id"]
                 org = provider["authorization"]["params"]["organization"]
                 # if the id matches our auto generated and the org id
-                # matches the existing auth0 org id, this is the 
+                # matches the existing auth0 org id, this is the
                 # associated one created automatically and can be used.
                 # otherwise, we  want to warn the user to review
                 # their auth config
