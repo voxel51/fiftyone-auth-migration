@@ -160,8 +160,8 @@ class Auth0UserBuilder:
     async def default_user_role(self) -> UserRole:
         if not self.__default_user_role:
             # Defer default user role retrieval until it is needed.
-            org_settings = await self.__organization_manager.get_settings()
-            self.__default_user_role = org_settings["default_user_role"]
+            # org_settings = await self.__organization_manager.get_settings()
+            self.__default_user_role = UserRole.GUEST # org_settings["default_user_role"]
 
         return self.__default_user_role
 
